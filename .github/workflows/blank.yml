@@ -14,8 +14,8 @@ on:
   workflow_dispatch:
 
 env:
-  DEVELOPER_SECRET_KEY: The Key
-  TITLE_ID: 32198
+  DEVELOPER_SECRET_KEY: FENBX1A3GNSA78ITOHZP79MQJCEI75S767ZRDXRSJUJ958SEDM
+  TITLE_ID: 64273
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
