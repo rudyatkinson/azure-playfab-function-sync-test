@@ -38,3 +38,7 @@ jobs:
         with:
           developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
           title-id: ${{ env.TITLE_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          app-name: ${{ secrets.APP_NAME }}
+          azure-authorization-key: ${{ secrets.AZURE_AUTHORIZATION_KEY }}
