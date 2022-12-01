@@ -13,6 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  DEVELOPER_SECRET_KEY: The Key
+  TITLE_ID: 32198
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -33,4 +37,5 @@ jobs:
       - name: Run my action
         uses: rudyatkinson/custom-action-example@main
         with:
-          message: hello rudy
+          developer-secret-key: ${{ env.DEVELOPER_SECRET_KEY }}
+          title-id: ${{ env.TITLE_ID }}
