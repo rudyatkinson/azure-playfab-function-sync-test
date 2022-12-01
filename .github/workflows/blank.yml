@@ -14,8 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  DEVELOPER_SECRET_KEY: FENBX1A3GNSA78ITOHZP79MQJCEI75S767ZRDXRSJUJ958SEDM
-  TITLE_ID: 64273
+  TITLE_ID: 7633A
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,5 +36,5 @@ jobs:
       - name: Run my action
         uses: rudyatkinson/custom-action-example@main
         with:
-          developer-secret-key: ${{ env.DEVELOPER_SECRET_KEY }}
+          developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
           title-id: ${{ env.TITLE_ID }}
