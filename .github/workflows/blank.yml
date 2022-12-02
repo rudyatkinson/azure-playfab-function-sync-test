@@ -36,8 +36,14 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az account get-access-token --output json > ".\accessToken.json"
-            echo .\accessToken.json
+            az account get-access-token --output json > "accessToken.json"
+            
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: access-token
+          path: accessToken.json
+          retention-days: 1
     
   sync:
     runs-on: ubuntu-latest
