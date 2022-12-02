@@ -23,13 +23,13 @@ jobs:
         uses: azure/login@v1
         with: 
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-          enable-AzPSSession: true
           
       - name: Azure CLI Get Access Token
         uses: azure/CLI@v1
         with:
           azcliversion: 2.30.0
           inlineScript: |
+            az ad sp create-for-rbac
             az account get-access-token --output json > "accessToken.json"
             
       - name: Upload Access Token as Artifact
