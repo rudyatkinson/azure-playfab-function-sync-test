@@ -38,6 +38,16 @@ jobs:
           name: access-token
           path: accessToken.json
           retention-days: 1
+          
+      - name: Run Sync Action
+        uses: rudyatkinson/custom-action-example@main
+        with:
+          developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
+          title-id: ${{ env.TITLE_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          app-name: ${{ secrets.APP_NAME }}
+          azure-authorization-key: ${{ secrets.AZURE_AUTHORIZATION_KEY }}
     
   sync:
     runs-on: ubuntu-latest
@@ -50,13 +60,3 @@ jobs:
           
       - name: Display Structure
         run: ls -R
-
-      - name: Run Sync Action
-        uses: rudyatkinson/custom-action-example@main
-        with:
-          developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
-          title-id: ${{ env.TITLE_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
-          resource-group: ${{ secrets.RESOURCE_GROUP }}
-          app-name: ${{ secrets.APP_NAME }}
-          azure-authorization-key: ${{ secrets.AZURE_AUTHORIZATION_KEY }}
