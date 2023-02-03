@@ -28,7 +28,7 @@ jobs:
       - run: |
           az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
                             --scopes /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }} \
-                            --sdk-auth --output json >> $SAMPLE
+                            --sdk-auth --output json >> "$SAMPLE"
           echo "$SAMPLE"
           
       - name: Azure Login with Credentials
