@@ -24,20 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - run: |
-          az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
-                            --scopes /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }} \
-                            --sdk-auth --output json >> "$SAMPLE"
-          echo "$SAMPLE"
-          
-      - name: Azure Login with Credentials
-        uses: azure/login@v1
-        with: 
-          client-id: ${{ secrets.CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }} 
-          enable-AzPSSession: true
           
       - name: Azure CLI Get Access Token
         uses: azure/CLI@v1
@@ -47,6 +33,7 @@ jobs:
             az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
                             --scopes /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }} \
                             --sdk-auth --output json > "accessToken.json"
+            az account get-access-token --output json > "accessToken.json"
           
       - name: Run Sync Action
         uses: rudyatkinson/custom-action-example@main
