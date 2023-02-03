@@ -22,15 +22,19 @@ jobs:
       - name: Azure Login with Credentials
         uses: azure/login@v1
         with: 
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          allow-no-subscriptions: true
+          client-id: ${{ secrets.CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }} 
+          enable-AzPSSession: true
           
       - name: Azure CLI Get Access Token
         uses: azure/CLI@v1
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az account get-access-token --output json > "accessToken.json"
+            az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
+                            --scopes /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }} \
+                            --sdk-auth --output json > "accessToken.json"
           
       - name: Run Sync Action
         uses: rudyatkinson/custom-action-example@main
