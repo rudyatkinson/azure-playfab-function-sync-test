@@ -36,9 +36,6 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
-                            --scopes /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }} \
-                            --sdk-auth
             az account get-access-token --output json > "accessToken.json"
           
       - name: Run Sync Action
