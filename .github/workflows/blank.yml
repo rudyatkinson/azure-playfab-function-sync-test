@@ -11,6 +11,7 @@ on:
 
 env:
   TITLE_ID: 7633A
+  SAMPLE: ""
   
 permissions:
   contents: read
@@ -25,10 +26,11 @@ jobs:
       - uses: actions/checkout@v3
       
       - run: |
-          echo az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
+          az ad sp create-for-rbac --name "BoardRoyaleDuelsApp" --role contributor \
                             --scopes /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }} \
-                            --sdk-auth
-
+                            --sdk-auth --output json > $SAMPLE
+          echo $SAMPLE
+          
       - name: Azure Login with Credentials
         uses: azure/login@v1
         with: 
