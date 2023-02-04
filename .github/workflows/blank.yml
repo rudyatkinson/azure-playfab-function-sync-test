@@ -7,15 +7,12 @@ on:
 jobs:
 
   playfab-azure-functions-sync:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       
       - name: Azure Login and Get Access Token
-        uses: azure/CLI@v1
-        with:
-          azcliversion: 2.30.0
-          inlineScript: |
+        run: |
             az login --service-principal -u ${{ secrets.AZURE_LOGIN_APP_ID }} -p ${{ secrets.AZURE_LOGIN_SECRET_VALUE }} --tenant ${{ secrets.AZURE_LOGIN_TENANT_ID }}
             az account get-access-token --output json > "accessToken.json"
           
