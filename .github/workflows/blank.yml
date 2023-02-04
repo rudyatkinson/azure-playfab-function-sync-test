@@ -30,7 +30,7 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az login --service-principal -u ff61bacc-f588-44ff-b10d-d5041b1309e0 -p i9D8Q~OZZ6ynvfeXJ2.yCVLPeGGtFs6eC2BCQco2 --tenant c8005a3b-1e12-4b8e-a323-917cf9159888
+            az login --service-principal -u ${{ secrets.AZURE_LOGIN_APP_ID }} -p ${{ secrets.AZURE_LOGIN_SECRET_VALUE }} --tenant ${{ secrets.AZURE_LOGIN_TENANT_ID }}
             az account get-access-token --output json > "accessToken.json"
           
       - name: Run Sync Action
