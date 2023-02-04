@@ -24,3 +24,4 @@ jobs:
           subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
           resource-group: ${{ secrets.RESOURCE_GROUP }}
           app-name: ${{ secrets.APP_NAME }}
+          clean-unused-functions: true
