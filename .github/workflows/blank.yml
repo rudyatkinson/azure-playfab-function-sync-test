@@ -23,4 +23,4 @@ jobs:
           azure-subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
           azure-resource-group: ${{ secrets.RESOURCE_GROUP }}
           azure-function-app-name: ${{ secrets.APP_NAME }}
-          playfab-clean-unused-functions: true
+          playfab-unregister-unused-functions: true
