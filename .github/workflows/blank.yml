@@ -13,15 +13,14 @@ jobs:
       
       - name: Azure Login and Get Access Token
         run: |
-            az login --service-principal -u ${{ secrets.AZURE_LOGIN_APP_ID }} -p ${{ secrets.AZURE_LOGIN_SECRET_VALUE }} --tenant ${{ secrets.AZURE_LOGIN_TENANT_ID }}
-            az account get-access-token --output json > "accessToken.json"
+          az login --service-principal -u ${{ secrets.AZURE_LOGIN_APP_ID }} -p ${{ secrets.AZURE_LOGIN_SECRET_VALUE }} --tenant ${{ secrets.AZURE_LOGIN_TENANT_ID }}
+          az account get-access-token --output json > "accessToken.json"
           
-      - name: Run Sync Action
-        uses: rudyatkinson/custom-action-example@main
+      - uses: rudyatkinson/azure-playfab-function-sync@v1.0.0
         with:
-          developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
-          title-id: ${{ secrets.TITLE_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
-          resource-group: ${{ secrets.RESOURCE_GROUP }}
-          app-name: ${{ secrets.APP_NAME }}
-          clean-unused-functions: true
+          playfab-developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
+          playfab-title-id: ${{ secrets.TITLE_ID }}
+          azure-subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
+          azure-resource-group: ${{ secrets.RESOURCE_GROUP }}
+          azure-function-app-name: ${{ secrets.APP_NAME }}
+          playfab-clean-unused-functions: true
