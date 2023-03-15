@@ -1,4 +1,4 @@
-name: azure-playfab-function-sync tests
+name: azure-playfab-function-sync-test
 
 on:
   push:
