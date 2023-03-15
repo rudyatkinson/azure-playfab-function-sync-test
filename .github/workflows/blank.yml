@@ -1,4 +1,4 @@
-name: CI
+name: azure-playfab-function-sync tests
 
 on:
   push:
@@ -11,6 +11,7 @@ jobs:
   playfab-azure-functions-sync:
     runs-on: ${{ matrix.os }}
     strategy:
+      max-parallel: 1
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04, ubuntu-22.04, macOS-10.15, macOS-11, macOS-12, windows-2019, windows-2022]
     steps:
