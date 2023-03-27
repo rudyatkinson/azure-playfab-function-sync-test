@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - uses: rudyatkinson/azure-playfab-function-sync@feature/1.1.0-b1
+      - uses: rudyatkinson/azure-playfab-function-sync@1.1.0-b1
         with:
           playfab-developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
           playfab-title-id: ${{ secrets.TITLE_ID }}
