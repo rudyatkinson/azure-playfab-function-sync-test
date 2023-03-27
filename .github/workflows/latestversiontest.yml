@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - uses: rudyatkinson/azure-playfab-function-sync@v1.0.1
+      - uses: rudyatkinson/azure-playfab-function-sync@v1.1.0
         with:
           azure-login-app-id: ${{ secrets.AZURE_LOGIN_APP_ID }}
           azure-login-secret-value: ${{ secrets.AZURE_LOGIN_SECRET_VALUE }}
