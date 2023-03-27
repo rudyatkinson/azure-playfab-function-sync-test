@@ -1,4 +1,4 @@
-name: azure-playfab-function-sync-test
+name: azure-playfab-function-sync-latest-version-test
 
 on:
   push:
@@ -17,13 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Azure Login and Get Access Token
-        run: |
-          az login --service-principal -u ${{ secrets.AZURE_LOGIN_APP_ID }} -p ${{ secrets.AZURE_LOGIN_SECRET_VALUE }} --tenant ${{ secrets.AZURE_LOGIN_TENANT_ID }}
-          az account get-access-token --output json > "accessToken.json"
-          
       - uses: rudyatkinson/azure-playfab-function-sync@v1.0.1
         with:
+          azure-login-app-id: ${{ secrets.AZURE_LOGIN_APP_ID }}
+          azure-login-secret-value: ${{ secrets.AZURE_LOGIN_SECRET_VALUE }}
+          azure-login-tenant-id: ${{ secrets.AZURE_LOGIN_TENANT_ID }}
           playfab-developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
           playfab-title-id: ${{ secrets.TITLE_ID }}
           azure-subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
