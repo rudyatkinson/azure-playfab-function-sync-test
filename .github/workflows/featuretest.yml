@@ -1,0 +1,31 @@
+name: azure-playfab-function-sync-feature-test
+
+on:
+  push:
+    branches: [ "main" ]
+    
+  workflow_dispatch:
+
+jobs:
+
+  playfab-azure-functions-sync:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 1
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04, macOS-11, macOS-12, windows-2019, windows-2022]
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: rudyatkinson/azure-playfab-function-sync@v1.0.1
+        with:
+          playfab-developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
+          playfab-title-id: ${{ secrets.TITLE_ID }}
+          azure-subscription-id: ${{ secrets.SUBSCRIPTION_ID}}
+          azure-resource-group: ${{ secrets.RESOURCE_GROUP }}
+          azure-function-app-name: ${{ secrets.APP_NAME }}
+          playfab-unregister-unused-functions: true
+          azure-login-app-id: ${{ secrets.AZURE_LOGIN_APP_ID }}
+          azure-login-secret-value: ${{ secrets.AZURE_LOGIN_SECRET_VALUE }}
+          azure-login-tenant-id: ${{ secrets.AZURE_LOGIN_TENANT_ID }}
+          
