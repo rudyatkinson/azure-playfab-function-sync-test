@@ -13,11 +13,11 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, macOS-11, macOS-12, windows-2019, windows-2022]
+        os: [ubuntu-20.04]
     steps:
       - uses: actions/checkout@v3
       
-      - uses: rudyatkinson/azure-playfab-function-sync@v1.0.1
+      - uses: rudyatkinson/azure-playfab-function-sync@feature/1.1.0-b1
         with:
           playfab-developer-secret-key: ${{ secrets.DEVELOPER_SECRET_KEY }}
           playfab-title-id: ${{ secrets.TITLE_ID }}
